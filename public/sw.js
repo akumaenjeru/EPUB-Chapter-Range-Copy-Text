@@ -1,9 +1,12 @@
-const CACHE_NAME = 'epub-chapter-exporter-v1';
+const CACHE_NAME = 'epub-chapter-exporter-v2';
 // This list should ideally be populated by a build process.
 // For now, it includes the essential files for the app shell to work offline.
 const urlsToCache = [
   '/',
-  '/index.html'
+  '/index.html',
+  '/manifest.json',
+  '/icons/icon-192x192.png',
+  '/icons/icon-512x512.png'
 ];
 
 self.addEventListener('install', event => {
@@ -38,8 +41,9 @@ self.addEventListener('fetch', event => {
 
         return fetch(fetchRequest).then(
           response => {
-            // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
+            // Check if we received a valid response.
+            // We don't check for response.type 'basic' to allow caching of CDN resources.
+            if (!response || response.status !== 200) {
               return response;
             }
 
