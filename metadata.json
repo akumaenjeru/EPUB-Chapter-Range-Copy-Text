@@ -1,0 +1,5 @@
+{
+  "name": "EPUB Chapter Exporter",
+  "description": "An application to upload an EPUB file, group its chapters, and copy the text content of those groups. It supports automatic chapter detection and manual pattern matching for customized chapter extraction.",
+  "requestFramePermissions": []
+}
